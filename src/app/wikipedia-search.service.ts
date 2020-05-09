@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs';
 
 //application wide shared Rx operators
 import { map, debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
