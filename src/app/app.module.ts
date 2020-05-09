@@ -1,16 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { HttpClientModule } from "@angular/common/http";
+import { WikipediaSearchService } from "./wikipedia-search.service";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
+  providers: [WikipediaSearchService],
+  declarations: [AppComponent],
+  imports: [BrowserModule, HttpClientModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
