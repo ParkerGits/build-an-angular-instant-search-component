@@ -3,7 +3,7 @@ import { WikipediaSearchService } from "./wikipedia-search.service";
 import { Subject } from "rxjs";
 
 //application wide shared Rx operators
-import { map, debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { map, debounceTime, distinctUntilChanged, mergeMap } from "rxjs/operators";
 
 @Component({
   selector: "app-root",
@@ -16,10 +16,7 @@ export class AppComponent {
         this.term$.pipe(
           debounceTime(400),
           distinctUntilChanged(),
-        ).subscribe(term => this.search(term));
-  }
-
-  search(term: string) {
-    this.service.search(term).subscribe(results => (this.items = results));
+          mergeMap(term => this.service.search(term)),
+        ).subscribe(results => this.items = results);
   }
 }
